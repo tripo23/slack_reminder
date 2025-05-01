@@ -25,5 +25,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt  # Instala tus dependencias desde el requirements.txt
 
+    - name: Set up environment variables
+      run: echo "SLACK_TOKEN=${{ secrets.SLACK_TOKEN }}" >> $GITHUB_ENV
+
     - name: Run the slack reminder script
       run: python token_test.py  # Ejecuta tu archivo principal de la app
