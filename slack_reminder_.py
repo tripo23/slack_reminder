@@ -26,8 +26,8 @@ headers = {
 }
 
 # Hora fija para el recordatorio (por ejemplo, 16:28)
-hora_recordatorio = "22:42"
-print("Hora de recordatorio establecida:", hora_recordatorio)
+hora_recordatorio = "09:15"
+print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
 #PROBAMOS UN HOLA MUNDO A VER SI LLEGA
 def enviar_hola_mundo():
