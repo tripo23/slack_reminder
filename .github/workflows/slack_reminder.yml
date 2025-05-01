@@ -26,4 +26,4 @@ jobs:
         pip install -r requirements.txt  # Instala tus dependencias desde el requirements.txt
 
     - name: Run the slack reminder script
-      run: python slack_reminder_.py  # Ejecuta tu archivo principal de la app
+      run: python token_test.py  # Ejecuta tu archivo principal de la app
