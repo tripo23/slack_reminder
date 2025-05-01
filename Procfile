@@ -1,1 +1,1 @@
-web: python slack_reminder_.py
+worker: python slack_reminder_.py
