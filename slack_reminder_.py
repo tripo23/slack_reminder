@@ -29,6 +29,14 @@ headers = {
 hora_recordatorio = "19:10"
 print("Hora de recordatorio establecida:", hora_recordatorio)
 
+#PROBAMOS UN HOLA MUNDO A VER SI LLEGA
+def enviar_hola_mundo():
+    """Envía un mensaje de "HOLA MUNDO" a Slack"""
+    data = {
+        "channel": channel,
+        "text": "HOLA MUNDO"
+    }
+
 def leer_eventos():
     """Leer los eventos desde el archivo JSON"""
     try:
@@ -105,4 +113,5 @@ def programar_eventos():
 
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
+    enviar_hola_mundo() 
     programar_eventos()
