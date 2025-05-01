@@ -25,7 +25,7 @@ headers = {
 }
 
 # Hora fija para el recordatorio (por ejemplo, 16:28)
-hora_recordatorio = "16:47"
+hora_recordatorio = "09:15"
 
 def leer_eventos():
     """Leer los eventos desde el archivo JSON"""
