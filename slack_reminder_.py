@@ -32,6 +32,7 @@ print("Hora de recordatorio establecida:", hora_recordatorio)
 #PROBAMOS UN HOLA MUNDO A VER SI LLEGA
 def enviar_hola_mundo():
     """Envía un mensaje de "HOLA MUNDO" a Slack"""
+    print("Se ejecuta hola mundo")
     data = {
         "channel": channel,
         "text": "HOLA MUNDO"
