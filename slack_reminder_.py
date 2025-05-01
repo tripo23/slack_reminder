@@ -26,7 +26,7 @@ headers = {
 }
 
 # Hora fija para el recordatorio (por ejemplo, 16:28)
-hora_recordatorio = "19:10"
+hora_recordatorio = "22:42"
 print("Hora de recordatorio establecida:", hora_recordatorio)
 
 #PROBAMOS UN HOLA MUNDO A VER SI LLEGA
@@ -125,5 +125,5 @@ def programar_eventos():
 
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
-    enviar_hola_mundo() 
+    #enviar_hola_mundo() 
     programar_eventos()

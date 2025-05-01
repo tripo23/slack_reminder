@@ -2,7 +2,7 @@ name: Slack Reminder
 
 on:
   schedule:
-    - cron: '10 22 * * *'  # Esto ejecutará el recordatorio todos los días a las 12:15 UTC / 9:15 GMT-3.
+    - cron: '42 22 * * *'  # Esto ejecutará el recordatorio todos los días a las 12:15 UTC / 9:15 GMT-3.
   push:
     branches:
       - main  # Ejecutar cuando se haga push en la rama principal.
