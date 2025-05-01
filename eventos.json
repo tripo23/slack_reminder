@@ -1,0 +1,27 @@
+[
+    {
+        "nombre": "Evento de prueba",
+        "fecha": "21/05/2025",
+        "hora": "16:00"
+    },
+    {
+        "nombre": "Final de la Champions",
+        "fecha": "31/05/2025",
+        "hora": "16:00"
+    },
+    {
+        "nombre": "Eliminatorias: Chile vs Argentina",
+        "fecha": "04/06/2025",
+        "hora": "TBD"
+    },
+    {
+        "nombre": "Eliminatorias: Argentina vs Colombia",
+        "fecha": "09/06/2025",
+        "hora": "TBD"
+    },
+    {
+        "nombre": "Mundial de Clubes",
+        "fecha": "14/06/2025",
+        "hora": "21:00"
+    }
+]
