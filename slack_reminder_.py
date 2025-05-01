@@ -37,6 +37,17 @@ def enviar_hola_mundo():
         "channel": channel,
         "text": "HOLA MUNDO"
     }
+    
+    try:
+        # Enviar la solicitud POST a Slack
+        response = requests.post(url, headers=headers, json=data)
+        
+        if response.status_code == 200:
+            print("HOLA MUNDO enviado correctamente.")
+        else:
+            print(f"Error al enviar HOLA MUNDO: {response.text}")
+    except Exception as e:
+        print(f"Error al hacer la solicitud de HOLA MUNDO: {e}")
 
 def leer_eventos():
     """Leer los eventos desde el archivo JSON"""
