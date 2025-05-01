@@ -1,0 +1,29 @@
+name: Slack Reminder
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # Esto ejecutará el recordatorio todos los días a las 16:00 UTC.
+  push:
+    branches:
+      - main  # Ejecutar cuando se haga push en la rama principal.
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Elige la versión de Python que estés usando
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Instala tus dependencias desde el requirements.txt
+
+    - name: Run the slack reminder script
+      run: python slack_reminder_.py  # Ejecuta tu archivo principal de la app
