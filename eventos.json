@@ -1,10 +1,14 @@
 [
     {
-        "nombre": "Evento de prueba",
-        "fecha": "21/05/2025",
+        "nombre": "Pappo x Juanse - Vorterix",
+        "fecha": "24/05/2025",
         "hora": "20:00"
     },
     {
+        "nombre": "Duki - Movistar Arena",
+        "fecha": "30/05/2025",
+        "hora": "21:00"
+    },{
         "nombre": "Final de la Champions",
         "fecha": "31/05/2025",
         "hora": "16:00"
@@ -28,5 +32,55 @@
         "nombre": "Mundial de Clubes",
         "fecha": "14/06/2025",
         "hora": "21:00"
+    },
+    {
+        "nombre": "Los Piojos - River Plate",
+        "fecha": "15/06/2025",
+        "hora": "TBD"
+    },
+    {
+        "nombre": "Diego Torres - Movistar Arena",
+        "fecha": "28/06/2025",
+        "hora": "21:00"
+    },
+    {
+        "nombre": "Erreway - Movistar Arena",
+        "fecha": "30/08/2025",
+        "hora": "21:00"
+    },
+    {
+        "nombre": "Lali - Velez Sarsfield",
+        "fecha": "06/09/2025",
+        "hora": "TBD"
+    },
+    {
+        "nombre": "Cazzu - Movistar Arena",
+        "fecha": "20/09/2025",
+        "hora": "21:00"
+    },
+    {
+        "nombre": "LuckRa - Movistar Arena",
+        "fecha": "04/10/2025",
+        "hora": "21:00"
+    },
+    {
+        "nombre": "Catriel y Paco - Movistar Arena",
+        "fecha": "08/10/2025",
+        "hora": "21:00"
+    },
+    {
+        "nombre": "La Sole - Gran Rex",
+        "fecha": "12/10/2025",
+        "hora": "TBD"
+    },
+    {
+        "nombre": "Linkin Park - Parque de la Ciudad",
+        "fecha": "31/10/2025",
+        "hora": "21:00"
+    },
+    {
+        "nombre": "Dua Lipa - River Plate",
+        "fecha": "08/11/2025",
+        "hora": "TBD"
     }
 ]
