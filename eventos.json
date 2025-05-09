@@ -1,11 +1,11 @@
 [
     {
-        "nombre": "Pappo x Juanse - Vorterix",
+        "nombre": "Pappo x Juanse en Vorterix",
         "fecha": "24/05/2025",
         "hora": "20:00"
     },
     {
-        "nombre": "Duki - Movistar Arena",
+        "nombre": "Duki en Movistar Arena",
         "fecha": "30/05/2025",
         "hora": "21:00"
     },{
@@ -14,12 +14,17 @@
         "hora": "16:00"
     },
     {
+        "nombre": "Final torneo Apertura",
+        "fecha": "01/06/2025",
+        "hora": "15:30"
+    },
+    {
         "nombre": "Eliminatorias: Chile vs Argentina",
         "fecha": "04/06/2025",
         "hora": "TBD"
     },
     {
-        "nombre": "Paulo Londra (7 y 8 de Junio) - Movistar Arena",
+        "nombre": "Paulo Londra (7 y 8 de Junio) en Movistar Arena",
         "fecha": "07/06/2025",
         "hora": "21:00"
     },
@@ -34,52 +39,52 @@
         "hora": "21:00"
     },
     {
-        "nombre": "Los Piojos - River Plate",
+        "nombre": "Los Piojos en River Plate",
         "fecha": "15/06/2025",
         "hora": "TBD"
     },
     {
-        "nombre": "Diego Torres - Movistar Arena",
+        "nombre": "Diego Torres en Movistar Arena",
         "fecha": "28/06/2025",
         "hora": "21:00"
     },
     {
-        "nombre": "Erreway - Movistar Arena",
+        "nombre": "Erreway en Movistar Arena",
         "fecha": "30/08/2025",
         "hora": "21:00"
     },
     {
-        "nombre": "Lali - Velez Sarsfield",
+        "nombre": "Lali en Velez Sarsfield",
         "fecha": "06/09/2025",
         "hora": "TBD"
     },
     {
-        "nombre": "Cazzu - Movistar Arena",
+        "nombre": "Cazzu en Movistar Arena",
         "fecha": "20/09/2025",
         "hora": "21:00"
     },
     {
-        "nombre": "LuckRa - Movistar Arena",
+        "nombre": "LuckRa en Movistar Arena",
         "fecha": "04/10/2025",
         "hora": "21:00"
     },
     {
-        "nombre": "Catriel y Paco - Movistar Arena",
+        "nombre": "Catriel y Paco en Movistar Arena",
         "fecha": "08/10/2025",
         "hora": "21:00"
     },
     {
-        "nombre": "La Sole - Gran Rex",
+        "nombre": "La Sole en Gran Rex",
         "fecha": "12/10/2025",
         "hora": "TBD"
     },
     {
-        "nombre": "Linkin Park - Parque de la Ciudad",
+        "nombre": "Linkin Park en Parque de la Ciudad",
         "fecha": "31/10/2025",
         "hora": "21:00"
     },
     {
-        "nombre": "Dua Lipa - River Plate",
+        "nombre": "Dua Lipa en River Plate",
         "fecha": "08/11/2025",
         "hora": "TBD"
     }
