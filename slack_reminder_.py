@@ -30,7 +30,7 @@ headers = {
 }
 
 # Hora fija para el recordatorio (por ejemplo, 16:28)
-hora_recordatorio = "12:15"
+hora_recordatorio = "20:56"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
 # Cargar el archivo de credenciales desde el archivo JSON decodificado
