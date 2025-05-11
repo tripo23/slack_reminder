@@ -14,7 +14,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "#testtripo"  # Canal donde se va a enviar el mensaje. Asegurate que el bot esté agregado previamente.
+channel = "#producto-flow"  # Canal donde se va a enviar el mensaje. Asegurate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
@@ -26,7 +26,7 @@ headers = {
 }
 
 # Hora fija para el recordatorio (por ejemplo, 16:28) en horario UTC (+3 sobre GMT-3)
-hora_recordatorio = "18:56"
+hora_recordatorio = "19:00"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
 #PROBAMOS UN HOLA MUNDO A VER SI LLEGA
@@ -35,7 +35,7 @@ def enviar_hola_mundo():
     print("Se ejecuta hola mundo")
     data = {
         "channel": channel,
-        "text": "HOLA MUNDO"
+        "text": "¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene Duki - Movistar Arena! Va a ser el 30/05/2025 a las 21:00hs."
     }
     
     try:
@@ -125,5 +125,5 @@ def programar_eventos():
 
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
-    #enviar_hola_mundo() 
+    enviar_hola_mundo() 
     programar_eventos()
