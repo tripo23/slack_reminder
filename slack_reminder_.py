@@ -25,8 +25,8 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# Hora fija para el recordatorio (por ejemplo, 16:28)
-hora_recordatorio = "15:50"
+# Hora fija para el recordatorio (por ejemplo, 16:28) en horario UTC (+3 sobre GMT-3)
+hora_recordatorio = "18:56"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
 #PROBAMOS UN HOLA MUNDO A VER SI LLEGA
