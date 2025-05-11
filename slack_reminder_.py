@@ -8,8 +8,7 @@ from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import time
 
-# Obtener las credenciales del servicio desde las variables de entorno
-firebase_service_account = json.loads(os.getenv('FIREBASE_SERVICE_ACCOUNT'))
+
 
 # Cargar las variables de entorno desde el archivo .env
 load_dotenv()
@@ -34,8 +33,10 @@ headers = {
 hora_recordatorio = "12:15"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
-# Configuración de Firebase
-cred = credentials.Certificate("service_account_firebase.json")  # Asegúrate de poner la ruta correcta al archivo de credenciales.
+
+# Obtener las credenciales del servicio desde las variables de entorno
+firebase_service_account = json.loads(os.getenv('FIREBASE_SERVICE_ACCOUNT'))
+cred = credentials.Certificate(firebase_service_account)  # Asegúrate de poner la ruta correcta al archivo de credenciales.
 firebase_admin.initialize_app(cred)
 
 # Obtener la referencia a la base de datos Firestore
