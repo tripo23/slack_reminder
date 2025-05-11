@@ -18,7 +18,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "#testtripo"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
+channel = "#producto-flow"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
@@ -29,8 +29,8 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# Hora fija para el recordatorio (por ejemplo, 16:28)
-hora_recordatorio = "21:00"
+# Hora fija para el recordatorio (por ejemplo, a las 12:15 UTC / 9:15 GMT-3)
+hora_recordatorio = "12:15"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
 # Cargar el archivo de credenciales desde el archivo JSON decodificado
