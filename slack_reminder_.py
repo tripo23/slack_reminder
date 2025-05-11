@@ -47,6 +47,8 @@ firebase_admin.initialize_app(cred)
 # Obtener la referencia a la base de datos Firestore
 db = firestore.client()
 
+print(firebase_service_account)  # Verifica si el JSON es correcto.
+
 # Obtener los eventos de Firestore
 def leer_eventos():
     """Leer los eventos desde Firestore"""
