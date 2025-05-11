@@ -30,5 +30,9 @@ jobs:
         echo "SLACK_TOKEN=${{ secrets.SLACK_TOKEN }}" >> $GITHUB_ENV
         echo "FIREBASE_SERVICE_ACCOUNT=${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" >> $GITHUB_ENV
 
+    - name: Decode Firebase Service Account Key
+      run: |
+        echo $FIREBASE_SERVICE_ACCOUNT | base64 --decode > service_account_firebase.json
+
     - name: Run the slack reminder script
       run: python slack_reminder_.py  # Ejecuta tu archivo principal de la app

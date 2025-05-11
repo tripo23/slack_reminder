@@ -33,21 +33,12 @@ headers = {
 hora_recordatorio = "12:15"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
-
-# Cargar el JSON de la cuenta de servicio desde la variable de entorno
-firebase_service_account = os.getenv('FIREBASE_SERVICE_ACCOUNT')
-
-# Convertir el JSON cargado en un diccionario
-service_account_dict = json.loads(firebase_service_account)
-
-# Inicializar Firebase con las credenciales del diccionario
-cred = credentials.Certificate(service_account_dict)
+# Cargar el archivo de credenciales desde el archivo JSON decodificado
+cred = credentials.Certificate('service_account_firebase.json')  # Archivo decodificado
 firebase_admin.initialize_app(cred)
 
 # Obtener la referencia a la base de datos Firestore
 db = firestore.client()
-
-print(firebase_service_account)  # Verifica si el JSON es correcto.
 
 # Obtener los eventos de Firestore
 def leer_eventos():
