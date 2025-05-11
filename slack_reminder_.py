@@ -1,6 +1,7 @@
+import firebase_admin
+from firebase_admin import credentials, firestore
 import requests
 import os
-import json
 import threading
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
@@ -14,7 +15,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "#producto-flow"  # Canal donde se va a enviar el mensaje. Asegurate que el bot esté agregado previamente.
+channel = "#testtripo"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
@@ -25,43 +26,37 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# Hora fija para el recordatorio (ej a las 12:15 UTC / 9:15 GMT-3).
+# Hora fija para el recordatorio (por ejemplo, 16:28)
 hora_recordatorio = "12:15"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
-#Mandamos un mensaje directo
-def enviar_mensaje_directo():
-    print("Se envía mensaje directo")
-    data = {
-        "channel": channel,
-        "text": "¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene Duki - Movistar Arena! Va a ser el 30/05/2025 a las 21:00hs."
-    }
-    
-    try:
-        # Enviar la solicitud POST a Slack
-        response = requests.post(url, headers=headers, json=data)
-        
-        if response.status_code == 200:
-            print("Mensaje directo enviado correctamente.")
-        else:
-            print(f"Error al enviar Mensaje directo: {response.text}")
-    except Exception as e:
-        print(f"Error al hacer la solicitud de Mensaje directo: {e}")
+# Configuración de Firebase
+cred = credentials.Certificate("service_account_firebase.json")  # Asegúrate de poner la ruta correcta al archivo de credenciales.
+firebase_admin.initialize_app(cred)
 
+# Obtener la referencia a la base de datos Firestore
+db = firestore.client()
+
+# Obtener los eventos de Firestore
 def leer_eventos():
-    """Leer los eventos desde el archivo JSON"""
+    """Leer los eventos desde Firestore"""
     try:
-        with open('eventos.json', 'r') as archivo:
-            eventos = json.load(archivo)
-        print("Eventos leídos correctamente desde eventos.json.")
-        return eventos
+        eventos_ref = db.collection(u'eventos')  # Asumimos que los eventos están en la colección 'eventos'
+        eventos = eventos_ref.stream()
+
+        evento_lista = []
+        for evento in eventos:
+            evento_lista.append(evento.to_dict())  # Convertimos cada documento en un diccionario
+
+        print(f"{len(evento_lista)} eventos leídos desde Firestore.")
+        return evento_lista
+
     except Exception as e:
-        print(f"Error al leer el archivo de eventos: {e}")
+        print(f"Error al leer los eventos desde Firestore: {e}")
         return []
 
 def enviar_mensaje(evento):
     """Envía un mensaje de recordatorio a Slack"""
-    # Si la hora es "TBD", enviamos el mensaje pero indicando que la hora aún no está definida
     if evento['hora'] == "TBD":
         hora_mensaje = "aún no definida"
     else:
@@ -69,7 +64,7 @@ def enviar_mensaje(evento):
     
     data = {
         "channel": channel,
-        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene '{evento['nombre']}'! Va a ser el {evento['fecha']} a las {hora_mensaje}."
+        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene '{evento['nombre']}'! Va a ser el {evento['fecha']} a las {hora_mensaje}. ¡Dejemos todo listo para brillar!"
     }
     
     try:
@@ -85,7 +80,6 @@ def enviar_mensaje(evento):
 
 def programar_recordatorio(evento):
     """Programa el recordatorio 20 días antes del evento, siempre a una hora fija"""
-    # Comprobamos si la hora es "TBD", pero aún así enviamos el mensaje
     print(f"Programando recordatorio para el evento: {evento['nombre']}")
     fecha_evento = datetime.strptime(f"{evento['fecha']} {evento['hora']}", "%d/%m/%Y %H:%M") if evento['hora'] != "TBD" else datetime.strptime(f"{evento['fecha']} 00:00", "%d/%m/%Y %H:%M")
     print(f"Fecha del evento: {fecha_evento}")
@@ -113,7 +107,7 @@ def programar_recordatorio(evento):
 
 def programar_eventos():
     """Crea un hilo por cada evento para ejecutar los recordatorios de forma independiente"""
-    eventos = leer_eventos()  # Leer los eventos desde el archivo JSON
+    eventos = leer_eventos()  # Leer los eventos desde Firestore
     if eventos:
         print(f"Se encontraron {len(eventos)} eventos para programar.")
         for evento in eventos:
@@ -124,5 +118,4 @@ def programar_eventos():
 
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
-    #enviar_mensaje_directo() 
     programar_eventos()
