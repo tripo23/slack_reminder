@@ -6,3 +6,4 @@ requests==2.32.3
 schedule==1.2.2
 slack_sdk==3.35.0
 urllib3==2.4.0
+firebase-admin==5.2.0
