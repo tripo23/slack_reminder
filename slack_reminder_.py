@@ -25,14 +25,13 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# Hora fija para el recordatorio (por ejemplo, 16:28) en horario UTC (+3 sobre GMT-3)
-hora_recordatorio = "19:06"
+# Hora fija para el recordatorio (ej a las 12:15 UTC / 9:15 GMT-3).
+hora_recordatorio = "12:15"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
-#PROBAMOS UN HOLA MUNDO A VER SI LLEGA
-def enviar_hola_mundo():
-    """Envía un mensaje de "HOLA MUNDO" a Slack"""
-    print("Se ejecuta hola mundo")
+#Mandamos un mensaje directo
+def enviar_mensaje_directo():
+    print("Se envía mensaje directo")
     data = {
         "channel": channel,
         "text": "¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene Duki - Movistar Arena! Va a ser el 30/05/2025 a las 21:00hs."
@@ -43,11 +42,11 @@ def enviar_hola_mundo():
         response = requests.post(url, headers=headers, json=data)
         
         if response.status_code == 200:
-            print("HOLA MUNDO enviado correctamente.")
+            print("Mensaje directo enviado correctamente.")
         else:
-            print(f"Error al enviar HOLA MUNDO: {response.text}")
+            print(f"Error al enviar Mensaje directo: {response.text}")
     except Exception as e:
-        print(f"Error al hacer la solicitud de HOLA MUNDO: {e}")
+        print(f"Error al hacer la solicitud de Mensaje directo: {e}")
 
 def leer_eventos():
     """Leer los eventos desde el archivo JSON"""
@@ -125,5 +124,5 @@ def programar_eventos():
 
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
-    #enviar_hola_mundo() 
+    #enviar_mensaje_directo() 
     programar_eventos()
