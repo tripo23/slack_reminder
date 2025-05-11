@@ -2,10 +2,14 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import requests
 import os
+import json
 import threading
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 import time
+
+# Obtener las credenciales del servicio desde las variables de entorno
+firebase_service_account = json.loads(os.getenv('FIREBASE_SERVICE_ACCOUNT'))
 
 # Cargar las variables de entorno desde el archivo .env
 load_dotenv()

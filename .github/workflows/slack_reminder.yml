@@ -27,6 +27,9 @@ jobs:
 
     - name: Set up environment variables
       run: echo "SLACK_TOKEN=${{ secrets.SLACK_TOKEN }}" >> $GITHUB_ENV
+    
+    - name: Set up environment variables
+      run: echo "FIREBASE_SERVICE_ACCOUNT=${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" >> $GITHUB_ENV
 
     - name: Run the slack reminder script
       run: python slack_reminder_.py  # Ejecuta tu archivo principal de la app
