@@ -26,7 +26,7 @@ headers = {
 }
 
 # Hora fija para el recordatorio (por ejemplo, 16:28) en horario UTC (+3 sobre GMT-3)
-hora_recordatorio = "19:00"
+hora_recordatorio = "19:06"
 print("Hora de recordatorio establecida:", hora_recordatorio, "UTC")
 
 #PROBAMOS UN HOLA MUNDO A VER SI LLEGA
@@ -70,7 +70,7 @@ def enviar_mensaje(evento):
     
     data = {
         "channel": channel,
-        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene '{evento['nombre']}'! Va a ser el {evento['fecha']} a las {hora_mensaje}. ¡Dejemos todo listo para brillar!"
+        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene '{evento['nombre']}'! Va a ser el {evento['fecha']} a las {hora_mensaje}."
     }
     
     try:
@@ -125,5 +125,5 @@ def programar_eventos():
 
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
-    enviar_hola_mundo() 
+    #enviar_hola_mundo() 
     programar_eventos()
