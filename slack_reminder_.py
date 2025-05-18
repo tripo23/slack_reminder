@@ -109,8 +109,10 @@ def programar_recordatorio(evento):
     print(f"Fecha del evento: {fecha_evento}")
 
     fecha_recordatorio = fecha_evento - timedelta(days=20)
+    print(f"fecha recordatorio: {fecha_recordatorio}")
 
     if (fecha_recordatorio == datetime.now()):
+        print(f"se va a enviar un recordatorio para {evento['nombre']}")
         enviar_mensaje(evento)
     
 
@@ -142,7 +144,6 @@ def programar_recordatorio(evento):
 #         print(f"El evento '{evento['nombre']}' ya pasó o está muy cerca de la fecha para programar el recordatorio.")
 
 def programar_eventos():
-    """Crea un hilo por cada evento para ejecutar los recordatorios de forma independiente"""
     eventos = leer_eventos()  # Leer los eventos desde Firestore
     if eventos:
         print(f"Se encontraron {len(eventos)} eventos para programar.")
