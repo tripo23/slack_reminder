@@ -102,32 +102,44 @@ def enviar_mensaje(evento):
     except Exception as e:
         print(f"Error al hacer la solicitud para {evento['nombre']}: {e}")
 
+
 def programar_recordatorio(evento):
-    """Programa el recordatorio 20 días antes del evento, siempre a una hora fija"""
-    print(f"Programando recordatorio para el evento: {evento['nombre']}")
-    fecha_evento = datetime.strptime(f"{evento['fecha']} {evento['hora']}", "%d/%m/%Y %H:%M") if evento['hora'] != "TBD" else datetime.strptime(f"{evento['fecha']} 00:00", "%d/%m/%Y %H:%M")
+    print (f"Programando para {evento['nombre']}")
+    fecha_evento = datetime.strptime(f"{evento['fecha']}", "%d/%m/%Y")
     print(f"Fecha del evento: {fecha_evento}")
 
     fecha_recordatorio = fecha_evento - timedelta(days=20)
-    
-    # Cambiar la hora del recordatorio a la hora fija (09:15)
-    hora_fija = datetime.strptime(hora_recordatorio, "%H:%M").time()
-    fecha_recordatorio = datetime.combine(fecha_recordatorio, hora_fija)
-    print(f"Fecha y hora del recordatorio: {fecha_recordatorio}")
 
-    # Calculamos el tiempo de espera (en segundos) hasta la fecha del recordatorio
-    tiempo_espera = (fecha_recordatorio - datetime.now()).total_seconds()
-    print(f"Tiempo de espera hasta el recordatorio: {tiempo_espera} segundos")
-    
-    # Verificamos si ya pasó el tiempo para enviar el recordatorio
-    if tiempo_espera > 0:
-        print(f"Recordatorio para '{evento['nombre']}' programado para el {fecha_recordatorio}")
-        
-        # Esperamos hasta la fecha programada
-        time.sleep(tiempo_espera)
+    if (fecha_recordatorio == datetime.now()):
         enviar_mensaje(evento)
-    else:
-        print(f"El evento '{evento['nombre']}' ya pasó o está muy cerca de la fecha para programar el recordatorio.")
+    
+
+# def programar_recordatorio(evento):
+#     """Programa el recordatorio 20 días antes del evento, siempre a una hora fija"""
+#     print(f"Programando recordatorio para el evento: {evento['nombre']}")
+#     fecha_evento = datetime.strptime(f"{evento['fecha']} {evento['hora']}", "%d/%m/%Y %H:%M") if evento['hora'] != "TBD" else datetime.strptime(f"{evento['fecha']} 00:00", "%d/%m/%Y %H:%M")
+#     print(f"Fecha del evento: {fecha_evento}")
+
+#     fecha_recordatorio = fecha_evento - timedelta(days=20)
+    
+#     # Cambiar la hora del recordatorio a la hora fija (09:15)
+#     hora_fija = datetime.strptime(hora_recordatorio, "%H:%M").time()
+#     fecha_recordatorio = datetime.combine(fecha_recordatorio, hora_fija)
+#     print(f"Fecha y hora del recordatorio: {fecha_recordatorio}")
+
+#     # Calculamos el tiempo de espera (en segundos) hasta la fecha del recordatorio
+#     tiempo_espera = (fecha_recordatorio - datetime.now()).total_seconds()
+#     print(f"Tiempo de espera hasta el recordatorio: {tiempo_espera} segundos")
+    
+#     # Verificamos si ya pasó el tiempo para enviar el recordatorio
+#     if tiempo_espera > 0:
+#         print(f"Recordatorio para '{evento['nombre']}' programado para el {fecha_recordatorio}")
+        
+#         # Esperamos hasta la fecha programada
+#         time.sleep(tiempo_espera)
+#         enviar_mensaje(evento)
+#     else:
+#         print(f"El evento '{evento['nombre']}' ya pasó o está muy cerca de la fecha para programar el recordatorio.")
 
 def programar_eventos():
     """Crea un hilo por cada evento para ejecutar los recordatorios de forma independiente"""
@@ -143,4 +155,4 @@ def programar_eventos():
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
     programar_eventos()
-    enviar_mensaje_directo()
+    #enviar_mensaje_directo()
