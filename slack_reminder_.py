@@ -18,7 +18,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "#producto-flow"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
+channel = "testtripo"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
@@ -39,6 +39,27 @@ firebase_admin.initialize_app(cred)
 
 # Obtener la referencia a la base de datos Firestore
 db = firestore.client()
+
+# Enviar un mensaje directo al canal
+def enviar_mensaje_directo():
+
+    print("Se ejecuta envio de mensaje directo")
+    data = {
+        "channel": channel,
+        "text": "¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene EVENTO! Va a ser el FECHA a las HORA."
+    }
+    
+    try:
+        # Enviar la solicitud POST a Slack
+        response = requests.post(url, headers=headers, json=data)
+        
+        if response.status_code == 200:
+            print("Mensaje directo enviado correctamente.")
+        else:
+            print(f"Error al enviar Mensaje directo: {response.text}")
+    except Exception as e:
+        print(f"Error al hacer la solicitud de Mensaje directo: {e}")
+
 
 # Obtener los eventos de Firestore
 def leer_eventos():
@@ -122,3 +143,4 @@ def programar_eventos():
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
     programar_eventos()
+    enviar_mensaje_directo()
