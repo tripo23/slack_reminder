@@ -109,7 +109,7 @@ def programar_recordatorio(evento):
     print(f"Fecha del evento: {fecha_evento}")
 
     fecha_recordatorio = fecha_evento - timedelta(days=20)
-    print(f"fecha recordatorio: {fecha_recordatorio}")
+    print(f"fecha recordatorio: {fecha_recordatorio}, hoy es {datetime.now}")
 
     if (fecha_recordatorio == datetime.now()):
         print(f"se va a enviar un recordatorio para {evento['nombre']}")
