@@ -18,7 +18,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "testtripo"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
+channel = "producto-flow"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
@@ -88,7 +88,7 @@ def enviar_mensaje(evento):
     
     data = {
         "channel": channel,
-        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene '{evento['nombre']}'! Va a ser el {evento['fecha']} a las {hora_mensaje}. ¡Dejemos todo listo para brillar!"
+        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene {evento['nombre']}! Va a ser el {evento['fecha']} a las {hora_mensaje}."
     }
     
     try:
