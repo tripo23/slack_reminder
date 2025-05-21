@@ -79,16 +79,21 @@ def leer_eventos():
         print(f"Error al leer los eventos desde Firestore: {e}")
         return []
 
-def enviar_mensaje(evento):
+def enviar_mensaje(evento, cercano=False):
     """Envía un mensaje de recordatorio a Slack"""
     if evento['hora'] == "TBD":
         hora_mensaje = "aún no definida"
     else:
         hora_mensaje = evento['hora']
-    
+
+    if cercano:
+        texto = f"⚠️ ¡En 3 días se viene {evento['nombre']}! Es este {evento['fecha']} a las {hora_mensaje}. ¡Últimos días para dejar todo listo!"
+    else:
+        texto = f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene {evento['nombre']}! Va a ser el {evento['fecha']} a las {hora_mensaje}."
+
     data = {
         "channel": channel,
-        "text": f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene {evento['nombre']}! Va a ser el {evento['fecha']} a las {hora_mensaje}."
+        "text": texto
     }
     
     try:
@@ -109,39 +114,16 @@ def programar_recordatorio(evento):
     print(f"Fecha del evento: {fecha_evento}")
 
     fecha_recordatorio = fecha_evento - timedelta(days=20)
-    print(f"fecha recordatorio: {fecha_recordatorio.date()}, hoy es {datetime.now().date()}")
+    fecha_recordatorio_cercano = fecha_evento - timedelta(days=3)
 
     if (fecha_recordatorio.date() == datetime.now().date()):
         print(f"se va a enviar un recordatorio para {evento['nombre']}")
         enviar_mensaje(evento)
-    
 
-# def programar_recordatorio(evento):
-#     """Programa el recordatorio 20 días antes del evento, siempre a una hora fija"""
-#     print(f"Programando recordatorio para el evento: {evento['nombre']}")
-#     fecha_evento = datetime.strptime(f"{evento['fecha']} {evento['hora']}", "%d/%m/%Y %H:%M") if evento['hora'] != "TBD" else datetime.strptime(f"{evento['fecha']} 00:00", "%d/%m/%Y %H:%M")
-#     print(f"Fecha del evento: {fecha_evento}")
+    if (fecha_recordatorio_cercano.date() == datetime.now().date()):
+        print(f"se va a enviar un recordatorio para {evento['nombre']}")
+        enviar_mensaje(evento, cercano=True)
 
-#     fecha_recordatorio = fecha_evento - timedelta(days=20)
-    
-#     # Cambiar la hora del recordatorio a la hora fija (09:15)
-#     hora_fija = datetime.strptime(hora_recordatorio, "%H:%M").time()
-#     fecha_recordatorio = datetime.combine(fecha_recordatorio, hora_fija)
-#     print(f"Fecha y hora del recordatorio: {fecha_recordatorio}")
-
-#     # Calculamos el tiempo de espera (en segundos) hasta la fecha del recordatorio
-#     tiempo_espera = (fecha_recordatorio - datetime.now()).total_seconds()
-#     print(f"Tiempo de espera hasta el recordatorio: {tiempo_espera} segundos")
-    
-#     # Verificamos si ya pasó el tiempo para enviar el recordatorio
-#     if tiempo_espera > 0:
-#         print(f"Recordatorio para '{evento['nombre']}' programado para el {fecha_recordatorio}")
-        
-#         # Esperamos hasta la fecha programada
-#         time.sleep(tiempo_espera)
-#         enviar_mensaje(evento)
-#     else:
-#         print(f"El evento '{evento['nombre']}' ya pasó o está muy cerca de la fecha para programar el recordatorio.")
 
 def programar_eventos():
     eventos = leer_eventos()  # Leer los eventos desde Firestore
