@@ -46,7 +46,7 @@ def enviar_mensaje_directo():
     print("Se ejecuta envio de mensaje directo")
     data = {
         "channel": channel,
-        "text": "¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene EVENTO! Va a ser el FECHA a las HORA."
+        "text": "¡Holaaaa! Paso a avisar que en el próximo sprint, se viene EVENTO! Va a ser el FECHA a las HORA."
     }
     
     try:
@@ -89,7 +89,7 @@ def enviar_mensaje(evento, cercano=False):
     if cercano:
         texto = f"⚠️ ¡En 3 días se viene {evento['nombre']}! Es este {evento['fecha']} a las {hora_mensaje}. ¡Últimos días para dejar todo listo!"
     else:
-        texto = f"¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene {evento['nombre']}! Va a ser el {evento['fecha']} a las {hora_mensaje}."
+        texto = f"¡Holaaaa! Paso a avisar que en el próximo sprint, se viene {evento['nombre']}! Va a ser el {evento['fecha']} a las {hora_mensaje}."
 
     data = {
         "channel": channel,
