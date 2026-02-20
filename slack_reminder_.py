@@ -18,7 +18,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "testtripo"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
+channel = "flow"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
