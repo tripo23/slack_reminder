@@ -138,4 +138,4 @@ def programar_eventos():
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
     programar_eventos()
-    enviar_mensaje_directo()
+    #enviar_mensaje_directo()
