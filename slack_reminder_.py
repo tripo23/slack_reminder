@@ -18,7 +18,7 @@ slack_token = os.getenv("SLACK_TOKEN")
 print("Token de Slack cargado.")
 
 # El canal al que se enviará el mensaje
-channel = "producto-flow"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
+channel = "testtripo"  # Canal donde se va a enviar el mensaje. Asegúrate que el bot esté agregado previamente.
 
 # URL de la API de Slack para enviar mensajes
 url = "https://slack.com/api/chat.postMessage"
@@ -46,7 +46,7 @@ def enviar_mensaje_directo():
     print("Se ejecuta envio de mensaje directo")
     data = {
         "channel": channel,
-        "text": "¡Holaaaa! Paso a avisar que, en el próximo sprint, se viene EVENTO! Va a ser el FECHA a las HORA."
+        "text": "¡Holaaaa! Paso a avisar que hoy juega Boca vs Racing a las 20hs!"
     }
     
     try:
@@ -138,4 +138,4 @@ def programar_eventos():
 if __name__ == "__main__":
     print("Iniciando la programación de eventos...")
     programar_eventos()
-    #enviar_mensaje_directo()
+    enviar_mensaje_directo()
